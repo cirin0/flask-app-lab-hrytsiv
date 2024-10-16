@@ -8,9 +8,14 @@
 </head>
 
 <body>
-    <h1>This Home page: </h1>
-    <h2>{{agent | upper}}</h2>
-    <h2>{{[agent] | length}}</h1>
+    <h1>Hello: </h1>
+    <h2>User: {{name |title}}</h2>
+
+    {% if age %}
+    <h2>Age: {{age}}</h2>
+    {% else %}
+    <h2>Age: empty</h2>
+    {% endif %}
 </body>
 
 </html>

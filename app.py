@@ -17,12 +17,11 @@ def home():
     return render_template('home.html', agent=agent)
 
 
-@app.route('/user/<string:name>')
+@app.route('/hi/<string:name>')
 def greeting(name):
     name = name.upper()
     age = request.args.get('age', 0, int)
-    year = 2024 - age
-    return f'Welcome, {name} - {year}!'
+    return render_template('hi.html', name=name, age=age)
 
 
 @app.route('/admin')
