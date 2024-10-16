@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+{% block title %}Hi{% endblock %}
 
-<body>
-    <h1>Hello: </h1>
-    <h2>User: {{name |title}}</h2>
+{% block content %}
+<h1>Hello: </h1>
+<h2>User: {{name |title}}</h2>
 
-    {% if age %}
-    <h2>Age: {{age}}</h2>
-    {% else %}
-    <h2>Age: empty</h2>
-    {% endif %}
-</body>
-
-</html>
+{% if age %}
+<h2>Age: {{age}}</h2>
+{% else %}
+<h2>Age: empty</h2>
+{% endif %}
+{% endblock %}
