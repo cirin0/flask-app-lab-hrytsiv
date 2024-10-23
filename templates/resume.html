@@ -1,6 +1,11 @@
-{% extends 'base-for-resume.html' %}
+{% extends 'base.html' %}
+
+{% block title %} {{title}} {% endblock %}
 
 {% block content %}
+<header>
+    {% include 'navbar.html' %}
+</header>
 <section class="page__start" id="resume">
     <div>
         <div class="star-left__title">Привіт 👋</div>
@@ -82,4 +87,7 @@
         <li>Телефон: +3800000000</li>
     </ul>
 </section>
+<footer>
+    {% include 'footer.html' %}
+</footer>
 {% endblock %}
