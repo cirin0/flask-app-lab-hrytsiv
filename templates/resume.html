@@ -1,0 +1,85 @@
+{% extends 'base-for-resume.html' %}
+
+{% block content %}
+<section class="page__start" id="resume">
+    <div>
+        <div class="star-left__title">Привіт 👋</div>
+        <div class="star-left__sub-title">Я Іван</div>
+        <div class="star-left__border"></div>
+        <div class="star-left__text">Я веб-розробник. 💻 У своїй кар'єрі я переважно працював над веб-розробкою.
+            У мене також є досвід розробки Windows-додатків на C++ та вирішення простих задач на Python.
+            Дослідження кордонів і функціональності нових технологій — одне з моїх улюблених захоплень.
+            Перегляньте «Мої роботи», щоб побачити деякі проєкти, над якими я працював.
+        </div>
+        <a href="#portfolio" style="display: inline-block;" class="star-left__button button">Мої
+            роботи</a>
+    </div>
+    <div>
+        <img class="main-img" src="{{ url_for('static', filename='images/page_2.png') }}" alt="img">
+    </div>
+</section>
+<section id="skills" class="container mt-5">
+    <h2>Навички</h2>
+    <ul class="skills-list">
+        <li>PHP (версія 6 і вище)</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>Python</li>
+        <li>Laravel</li>
+        <li>SQL (PostgreSQL, MySQL)</li>
+        <li>Spring Boot</li>
+    </ul>
+</section>
+<section id="education" class="container mt-5">
+    <h2>Освіта</h2>
+    <div class="education-item">
+        <h3>Прикарпатський національний університет імені Василя Стефаника</h3>
+        <p><strong>Ступінь:</strong> Навчаюсь</p>
+        <p><strong>Спеціальність:</strong>Інженерія програмного забезпечення</p>
+    </div>
+    <div class="education-item">
+        <h3>Вище професійне училище сфери обслуговування техніки (ВПУ СОТ)</h3>
+        <p><strong>Закінчив:</strong> 2022р.</p>
+        <p><strong>Спеціальність:</strong>Оператор з обробки інформації та програмного забезпечення</p>
+    </div>
+    <div class="education-item">
+        <h3>Вербівська школа I-II ступенів</h3>
+        <p><strong>Закінчив:</strong> 2019р.</p>
+    </div>
+</section>
+<section class="my__works" id="portfolio">
+    <h2 class="works__my-works-title-3">
+        Мої роботи
+    </h2>
+    <div class="works__my-works">
+        <div class="my-works">
+            <a target="_blank" href="https://github.com/cirin0/DSI">
+                <img src="{{ url_for('static', filename='images/first_img.png') }}" alt="">
+                <p>DSI</p>
+            </a>
+        </div>
+        <div class="my-works my-works-second">
+            <a target="_blank" href="https://github.com/cirin0/Haus">
+                <img src="{{ url_for('static', filename='images/second_img.png') }}" alt="">
+                <p>HAUS</p>
+            </a>
+        </div>
+        <div class="my-works">
+            <a target="_blank" href="https://github.com/cirin0/Dance">
+                <img src="{{ url_for('static', filename='images/third_img.png') }}" alt="">
+                <p>DANCE</p>
+            </a>
+        </div>
+    </div>
+</section>
+<section id="contact" class="container mt-5">
+    <h2 class="works__my-works-title-3">Зв'язок зі мною</h2>
+    <p>Давайте поспілкуємось і побачимо, чим я зможу вам допомогти. Напишіть
+        мені електронний лист або зв'яжіться зі мною через мої соціальні медіа, я завжди радий сказати
+        ПРИВІТ!!</p>
+    <ul>
+        <li>Email: email@example.com</li>
+        <li>Телефон: +3800000000</li>
+    </ul>
+</section>
+{% endblock %}

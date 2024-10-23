@@ -54,5 +54,10 @@ def get_post(id):
     return render_template('detail-post.html', post=post)
 
 
+@app.route('/resume')
+def resume():
+    return render_template('resume.html', title='Моє резюме')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
