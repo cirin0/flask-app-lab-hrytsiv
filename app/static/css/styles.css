@@ -1,6 +1,17 @@
 body {
+    padding: 20px;
     font-family: "Roboto", sans-serif;
     background-color: #f4f4f9;
+}
+
+/* *********************************** */
+
+
+/* *********************************** */
+
+
+main {
+    padding: 20px;
 }
 
 
