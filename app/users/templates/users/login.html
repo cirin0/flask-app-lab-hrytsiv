@@ -1,13 +1,27 @@
 {% extends "base.html" %}
 
 {% block title %}Greeting Page{% endblock %}
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
 
 {% block content %}
 
-<h1>Login</h1>
-<form method="POST" action="">
-    Ім'я користувача: <input type="text" name="username" required><br>
-    <input type="submit" value="Увійти">
-</form>
+<div style="max-width: 400px; margin: auto; padding: 20px;">
+    <h1 class="text-center">Login</h1>
+    <form method="post" class="form-signin">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary btn-block" value="Увійти">
+    </form>
+</div>
 
 {% endblock %}

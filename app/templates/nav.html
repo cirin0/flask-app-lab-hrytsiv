@@ -1,0 +1,21 @@
+<div class="center">
+    <nav class="flex-column bg-dark bg-gradient center text-light ">
+        <ul class="nav container">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Головна</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.login') }}">Увійти</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('resume') }}">Резюме</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.get_profile', username=username) }}">Профіль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.logout') }}">Вийти</a>
+            </li>
+        </ul>
+    </nav>
+</div>
