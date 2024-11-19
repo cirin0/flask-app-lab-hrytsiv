@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/posts.css') }}">
+{% endblock %}
+
 {% block title %}Posts{% endblock %}
 
 {% block header %}
@@ -8,7 +12,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>Posts</h1>
+    <h1 class="red">Posts</h1>
     {% if posts %}
     <div class="row">
         {% for post in posts %}
@@ -16,7 +20,7 @@
             <div class="card h-100 ">
                 <div class="card-body">
                     <img style="height: 230px; margin-bottom: 15px; "
-                        src="{{ url_for('static', filename='images/page_2.png') }}">
+                        src="{{ url_for('static', filename='images/logo.png') }}">
                     <div class="d-flex justify-content-between align-items-start">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <span class="badge bg-secondary">{{ post.category }}</span>
