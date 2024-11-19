@@ -2,13 +2,43 @@
 
 {% block title %}Posts{% endblock %}
 
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
+
 {% block content %}
-<h1>Articles</h1>
-<ul>
-    {% for post in posts %}
-    <li>{{post["id"]}} -
-        <a href="{{ url_for('posts.get_post' , id=post['id']) }}">{{post["title"]}}</a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="container">
+    <h1>Posts</h1>
+    {% if posts %}
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-3 my-2">
+            <div class="card h-100 ">
+                <div class="card-body">
+                    <img style="height: 230px; margin-bottom: 15px; "
+                        src="{{ url_for('static', filename='images/page_2.png') }}">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <span class="badge bg-secondary">{{ post.category }}</span>
+                    </div>
+                    <h6 class="card-subtitle mb-2 text-muted">By {{ post.author }}</h6>
+                    <p class="card-text">{{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Published: {{ post.publish_date }}</small>
+                    <a href="{{ url_for('posts.get_post', id=post.id) }}"
+                        class="btn btn-sm btn-outline-primary float-end">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    {% else %}
+    <div class="col-12">
+        <p class="text-center">No posts found.</p>
+    </div>
+    {% endif %}
+    <a href="{{ url_for('posts.add_post') }}" class="btn btn-primary my-4">Add Post</a>
+</div>
 {% endblock %}
