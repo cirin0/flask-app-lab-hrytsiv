@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/posts.css') }}">
+{% endblock %}
+
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block header %}
@@ -18,12 +22,18 @@
         <div class="card-body">
             <img style="height: 230px; margin-bottom: 15px; " src="{{ url_for('static', filename='images/logo.png') }}">
             <h6 class="card-subtitle mb-3 text-muted">
-                By {{ post.author }} | Published: {{ post.publish_date }}
+                By {{ post.author }} | Published: {{ post.posted.strftime('%Y-%m-%d') }}
             </h6>
             <p class="card-text">{{ post.content }}</p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer footer-card">
+            <form action="{{ url_for('.delete_post', id=post.id) }}" method="POST">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
             <a href="{{ url_for('posts.get_posts') }}" class="btn btn-outline-primary">Back to Posts</a>
+            <form action="{{ url_for('.edit_post', id=post.id) }}" method="POST">
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
         </div>
     </div>
 </div>

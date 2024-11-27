@@ -28,10 +28,14 @@
                     <h6 class="card-subtitle mb-2 text-muted">By {{ post.author }}</h6>
                     <p class="card-text">{{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}</p>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Published: {{ post.publish_date }}</small>
+                <div class="card-footer footer-card">
+                    <small class="text-muted">Published: {{ post.posted.strftime('%Y-%m-%d') }}</small>
                     <a href="{{ url_for('posts.get_post', id=post.id) }}"
-                        class="btn btn-sm btn-outline-primary float-end">Read More</a>
+                        class="btn btn-sm btn-outline-primary float-end">Read More
+                    </a>
+                    <form action="{{ url_for('.delete_post', id=post.id) }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>

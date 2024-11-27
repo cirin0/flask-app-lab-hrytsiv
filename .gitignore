@@ -1,3 +1,11 @@
 .venv
 __pycache__
 .vscode
+.ini
+*.log
+*.pyc
+*.sqlite
+migrations/README
+migrations/env.py
+migrations/alembic.ini
+migrations/script.py.mako

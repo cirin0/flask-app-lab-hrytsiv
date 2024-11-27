@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Add Post{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block title %}Posts{% endblock %}
+
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
 
 {% block content %}
-
-<h1>Add Post</h1>
+<h1>Edit Post</h1>
 <form method="post" action="" novalidate>
     {{ form.hidden_tag() }}
     {% from 'form_macros.html' import render_field %}
@@ -19,7 +26,7 @@
     </div>
     <br>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Add Post</button>
+        <button type="submit" class="btn btn-primary">Update Post</button>
     </div>
 </form>
 <br>
