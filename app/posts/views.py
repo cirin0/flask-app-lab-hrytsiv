@@ -1,7 +1,9 @@
 from flask import flash, redirect, render_template, abort, url_for, session
 
-from app.posts.models import Post
+from app.posts.models import Post, Tag
 from app import db
+
+from app.users.models import User
 
 from .forms import PostForm
 from . import post_bp
@@ -23,20 +25,25 @@ def get_post(id):
 
 @post_bp.route('/add_post', methods=['GET', 'POST'])
 def add_post():
-    if 'username' not in session:
-        flash('Please login to add a post', 'danger')
-        return redirect(url_for('users.login'))
+    # if 'username' not in session:
+    # flash('Please login to add a post', 'danger')
+    # return redirect(url_for('users.login'))
+    authors = User.query.all()
+    author_choices = [(author.id, author.username) for author in authors]
     form = PostForm()
+    form.author.choices = author_choices
     if form.validate_on_submit():
 
         new_post = Post(
             title=form.title.data,
             content=form.content.data,
             is_active=form.is_active.data,
-            posted=form.publish_date.data,
+            posted=form.posted.data,
             category=form.category.data,
-            author=session.get('username', 'Anonymous')
+            user_id=form.author.data
         )
+        selected_tags = Tag.query.filter(Tag.id.in_(form.tags.data)).all()
+        new_post.tags.extend(selected_tags)
 
         db.session.add(new_post)
         db.session.commit()
@@ -62,15 +69,19 @@ def delete_post(id):
 @post_bp.route('/edit_post/<int:id>', methods=['GET', 'POST'])
 def edit_post(id):
     post = db.get_or_404(Post, id)
-
+    authors = User.query.all()
+    author_choices = [(author.id, author.username) for author in authors]
     form = PostForm(obj=post)
-
+    form.author.choices = author_choices
     if form.validate_on_submit():
         post.title = form.title.data
         post.content = form.content.data
         post.is_active = form.is_active.data
         post.posted = form.posted.data
         post.category = form.category.data
+        post.user_id = form.author.data
+        selected_tags = Tag.query.filter(Tag.id.in_(form.tags.data)).all()
+        post.tags = selected_tags
 
         db.session.commit()
 

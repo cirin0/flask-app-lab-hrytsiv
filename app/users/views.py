@@ -2,6 +2,9 @@ from flask import flash, make_response, render_template, request, redirect, sess
 from . import user_bp
 from datetime import timedelta
 
+from app.users.models import User
+from app import db
+
 
 @user_bp.route('/hi/<string:name>')
 def greeting(name):

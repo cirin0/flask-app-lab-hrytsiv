@@ -22,7 +22,7 @@ def create_app(config_name="config"):
     with app.app_context():
         from . import views  # noqa: E402, F401
         from .posts import post_bp, models
-        from .users import user_bp
+        from .users import user_bp, models
         app.register_blueprint(post_bp)
         app.register_blueprint(user_bp)
 
