@@ -29,7 +29,7 @@
                     <p class="card-text">{{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}</p>
                 </div>
                 <div class="card-footer footer-card">
-                    <small class="text-muted">Published: {{ post.posted.strftime('%Y-%m-%d') }}</small>
+                    <small class="text-muted">Published: <br> {{ post.posted.strftime('%Y-%m-%d') }}</small>
                     <a href="{{ url_for('posts.get_post', id=post.id) }}"
                         class="btn btn-sm btn-outline-primary float-end">Read More
                     </a>
