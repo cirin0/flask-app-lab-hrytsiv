@@ -12,9 +12,8 @@
 <div class="container mt-5" style="padding: 20px; ">
     <div class="row">
         <div class="col-md-6 offset-md-3 text-center">
-            <h2 class="display-4">Ласкаво просимо на сторінку: {{username}}!</h2>
-            <p class="lead">Ваша електронна адреса: {{email}}</p>
-            <a href="{{ url_for('users.logout') }}" class="btn btn-danger mt-3">Logout</a>
+            <h2 class="display-4">Ласкаво просимо на сторінку: {{user.username}}!</h2>
+            <p class="lead">Ваша електронна адреса: {{user.email}}</p>
         </div>
     </div>
     <h3 class="mt-5">Таблиця всіх користувачів</h3>
