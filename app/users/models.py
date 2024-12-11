@@ -1,4 +1,5 @@
 from app import db
+from app import bcrypt
 
 
 class User(db.Model):
@@ -8,6 +9,12 @@ class User(db.Model):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
+
+    def hash_password(self, password):
+        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    def check_password(self, password):
+        return bcrypt.check_password_hash(self.password, password)
 
     def __repr__(self):
         return f"User('{self.email}')"

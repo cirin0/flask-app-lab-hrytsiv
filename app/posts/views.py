@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, abort, url_for, session
+from flask import flash, redirect, render_template, abort, url_for
 
 from app.posts.models import Post, Tag
 from app import db

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Account{% endblock %}
+
+
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5" style="padding: 20px; ">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h2 class="display-4">Ласкаво просимо на сторінку: {{username}}!</h2>
+            <p class="lead">Ваша електронна адреса: {{email}}</p>
+            <a href="{{ url_for('users.logout') }}" class="btn btn-danger mt-3">Logout</a>
+        </div>
+    </div>
+    <h3 class="mt-5">Таблиця всіх користувачів</h3>
+    {% if count > 0 %}
+    <p>Всього користувачі: {{ count }}</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in all_users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Не знайдено жодного зареєстрованого користувача</p>
+    {% endif %}
+</div>
+
+
+{% endblock %}
