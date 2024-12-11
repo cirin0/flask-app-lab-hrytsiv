@@ -74,16 +74,11 @@ def login():
         email = form.email.data.lower()
         user = User.query.filter_by(email=email).first()
         if user and user.check_password(form.password.data):
-            login_user(user)
+            login_user(user, remember=form.remember.data)
             flash('You are successfully logged in', 'success')
             return redirect(url_for('users.get_account'))
         flash('Invalid email or password', 'danger')
     return render_template('users/login.html', form=form, title='Login')
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
 
 @user_bp.route('/account')
