@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Greeting Page{% endblock %}
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block content %}
+
+<br>
+<h1>Login</h1>
+<form method="post" action="" novalidate>
+    {{ form.hidden_tag() }}
+    {% from 'form_macros.html' import render_field %}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    <br>
+    <div class="form-group form-check">
+        {{ form.remember(class="form-check-input") }}
+        {{ form.remember.label(class="form-check-label") }}
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>
+
+{% endblock %}

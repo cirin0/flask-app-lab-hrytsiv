@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block title %}Posts{% endblock %}
+
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block content %}
+<h1>Edit Post</h1>
+<form method="post" action="" novalidate>
+    {{ form.hidden_tag() }}
+    {% from 'form_macros.html' import render_field %}
+    {{ render_field(form.title) }}
+    {{ render_field(form.content) }}
+    {{ render_field(form.posted) }}
+    {{ render_field(form.category) }}
+    {{ render_field(form.author) }}
+    {{ render_field(form.tags) }}
+    <br>
+    <div class="form-group form-check">
+        {{ form.is_active(class="form-check-input") }}
+        {{ form.is_active.label(class="form-check-label") }}
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update Post</button>
+    </div>
+</form>
+<br>
+
+<a style="margin-bottom: 20px; display: inline-block;" href="{{ url_for('posts.get_posts') }}">Return to posts</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+<div class="center">
+    <nav class="flex-column bg-dark bg-gradient center text-light ">
+        <ul class="nav container">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Головна</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('posts.get_posts') }}">Пости</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('resume') }}">Резюме</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.get_profile', username=username) }}">Профіль</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.get_account') }}">Мій профіль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.logout') }}">Вийти</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.register') }}">Зареєструватися</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.login') }}">Увійти</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

@@ -2,7 +2,10 @@
 
 {% block title %}Home{% endblock %}
 
+{% block header %}
+{% include 'nav.html' %}
+{% endblock %}
+
 {% block content %}
-<h1>This is your Homepage: </h1>
-<h2>Agent: {{agent | upper}}</h2>
+<h1>Hello world</h1>
 {% endblock %}
